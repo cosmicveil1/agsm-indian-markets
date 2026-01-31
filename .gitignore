@@ -1,0 +1,36 @@
+# Python
+__pycache__/
+*.py[cod]
+*.so
+*.egg-info/
+dist/
+build/
+
+# Virtual environments
+agsm_venv/
+ai_venv/
+venv/
+conda/
+
+
+# Data
+data/raw/*.csv
+data/processed/*.pkl
+*.h5
+
+# Models
+*.pth
+*.pt
+checkpoints/
+
+# Notebooks
+.ipynb_checkpoints/
+
+# Environment
+.env
+venv/
+conda/
+
+# IDE
+.vscode/
+.idea/
