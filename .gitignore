@@ -34,3 +34,4 @@ conda/
 # IDE
 .vscode/
 .idea/
+data.csv
