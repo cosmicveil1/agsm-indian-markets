@@ -170,16 +170,24 @@ model = AGSMNetLite(
 )
 ```
 
-## 📈 Results
+## 📈 Evaluation & Results
 
-Training on Indian stock market data (RELIANCE, TCS, HDFC Bank, etc.):
+The model is evaluated using a rigorous set of metrics to ensure both numerical accuracy and directional correctness:
+- **Numerical Accuracy**: MAE, RMSE, and R² Score.
+- **Trading Relevance**: Directional Accuracy (DA) measures the percentage of correct trend predictions (Up/Down).
+- **Baselines**: Performance is benchmarked against a Naive Predictor (Yesterday's value) to demonstrate true learning.
 
-| Model | MAE (₹) | RMSE (₹) | R² |
-|-------|---------|----------|-----|
-| AGSMNet | TBD | TBD | TBD |
-| AGSMNetLite | TBD | TBD | TBD |
+*Preliminary results indicate the model successfully captures frequency-domain features, though full convergence requires extensive hyperparameter tuning on specific assets.*
 
-*Note: Run training to populate results*
+## 🛣️ Roadmap & Future Work
+
+This project is under active development. Current focus areas include:
+1.  **Hyperparameter Optimization**: Systematically tuning `window_size`, `alpha` (STFT), and Mamba state dimensions using Ray Tune.
+2.  **Extended Dataset**: Scaling training to include 50+ NIFTY 50 stocks to improve generalization.
+3.  **Real-time Inference**: Exporting the model to ONNX for low-latency inference in live trading scenarios.
+4.  **Transformer vs Mamba**: Conducting a rigorous A/B test against Transformer-based baselines (PatchTST, iTransformer).
+
+For a deep dive into the architectural decisions and implementation details, please see the [**Technical Walkthrough**](walkthrough.md).
 
 ## 🧪 Component Tests
 
