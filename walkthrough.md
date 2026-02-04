@@ -40,7 +40,18 @@ This project implements **AGSMNet** (Adaptive Gaussian STFT + Mamba Network), a 
 *Problem*: 2D feature maps with Mamba can consume significant VRAM.
 *Solution*: Implemented `AGSMNetLite`, a stripped-down version reducing channels and layers while maintaining the core architectural advantages.
 
-## 4. Future Improvements for Production
+### Challenge: Data Scarcity (OHLC vs LOB)
+*Problem*: Daily OHLC data for a single stock yields only ~5,000 points over 20 years, which is insufficient for training deep SSMs without overfitting.
+*Solution*: Integrated **Limit Order Book (LOB)** data training support. LOB data provides tick-level granularity (Bid/Ask queues), expanding the dataset from thousands to millions of data points, allowing the Mamba model to learn complex microstructure patterns.
+
+## 4. Engineering Best Practices
+This project adheres to professional software engineering standards to ensuring maintainability and scalability:
+-   **Modular Design**: Components (AG-STFT, Mamba, Backend) are decoupled into separate modules in `models/` for reusability.
+-   **Testing**: Unit tests in `tests/` ensure component correctness using `pytest`.
+-   **Configuration Management**: Hyperparameters and model configs are separated from logic.
+-   **Type Hinting**: Extensive use of Python type hints for code clarity and IDE support.
+
+## 5. Future Improvements for Production
 -   **Hyperparameter Tuning**: Run a sweep (Ray Tune / Optuna) to find optimal window sizes and alpha for STFT.
 -   **Ensembling**: Combine AGSMNet with Transformer baselines.
 -   **Latency Optimization**: Export to ONNX/TensorRT for real-time inference.
